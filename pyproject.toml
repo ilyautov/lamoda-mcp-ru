@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lamoda-mcp-ru"
+version = "0.1.0"
+description = "MCP-сервер для кабинета продавца Lamoda: товары, цены, заказы, отгрузки, остатки, акции и возвраты через Lamoda Seller Partner API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ilya Utov" }]
+keywords = [
+    "mcp", "model-context-protocol", "lamoda", "lamoda-api", "seller-api",
+    "marketplace", "ecommerce", "claude", "ai-agents", "russia",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.urls]
+Homepage = "https://github.com/ilyautov/lamoda-mcp-ru"
+Issues = "https://github.com/ilyautov/lamoda-mcp-ru/issues"
+
+[project.scripts]
+lamoda-mcp = "lamoda_mcp.server:main"
+
+[tool.setuptools]
+packages = ["core", "lamoda_mcp"]
+
+[tool.setuptools.package-data]
+# Каталог и рецепты — данные пакета: без них сервер не поднимется.
+lamoda_mcp = ["*.yaml"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]

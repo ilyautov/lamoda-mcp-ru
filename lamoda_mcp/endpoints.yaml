@@ -1,0 +1,5091 @@
+# СГЕНЕРИРОВАННЫЙ ФАЙЛ — правьте scripts/ingest_lamoda.py или
+# lamoda_mcp/safety_overrides.yaml, затем пересоберите:
+#     python3 scripts/ingest_lamoda.py
+# Источник: https://public-api-seller.lamoda.ru/swagger.json
+#
+# live_verified: false у всех методов — каталог собран из спеки,
+# ни один запрос не выполнялся на живом кабинете Lamoda.
+service: lamoda
+host: public-api-seller.lamoda.ru
+base_path: /jsonrpc
+protocol: json-rpc-2.0
+generated_from: https://public-api-seller.lamoda.ru/swagger.json
+items_path_unresolved:
+- v1.exports.list
+- v1.imports.list
+- v1.matching-manager.price-index.products.list
+- v1.nomenclature-images.list
+- v1.nomenclatures.list
+- v1.orders.list
+- v1.seller-return-fbs.anomaly-box.list
+- v1.seller-return-fbs.box.list
+- v1.seller-return-fbs.items.list
+- v1.shipment-items.list
+- v1.shipments.list
+- v1.stocks-illiquid.list
+- v1.supplier-return.item.list
+- v1.supplier-return.list
+endpoints:
+- operation_id: v1.async-api-request.get
+  rpc_method: v1.async-request.get
+  path: /jsonrpc/v1/async-api-request.get
+  section: files
+  safety: read
+  summary: Returns a price update request details
+  pagination: none
+  items_path: ''
+  keywords:
+  - async
+  - api
+  - request
+  - get
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.async-request.get', а путь — 'v1.async-api-request.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    request_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.attribute-dictionaries.list
+  rpc_method: v1.attribute-dictionaries.list
+  path: /jsonrpc/v1/attribute-dictionaries.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.attribute-dictionaries.list.
+  pagination: none
+  items_path: ''
+  keywords:
+  - attribute
+  - dictionaries
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    dictionaries:
+      type: array
+    sellerId:
+      type: string
+- operation_id: v1.attributes-dictionaries-mappings.get
+  rpc_method: v1.attributes.dictionaries.mapping
+  path: /jsonrpc/v1/attributes-dictionaries-mappings.get
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.attributes-dictionaries-mappings.get.
+  pagination: none
+  items_path: result.brand_country_mapping
+  keywords:
+  - attributes
+  - dictionaries
+  - mappings
+  - get
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.attributes.dictionaries.mapping', а путь — 'v1.attributes-dictionaries-mappings.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    rec_id:
+      type: string
+      required: true
+    sellerId:
+      type: string
+- operation_id: v1.attributes.list
+  rpc_method: v1.attributes.list
+  path: /jsonrpc/v1/attributes.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.attributes.list.
+  pagination: none
+  items_path: result.items
+  keywords:
+  - attributes
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    recId:
+      type: string
+- operation_id: v1.attributes.sku.list
+  rpc_method: v1.attributes.sku.list
+  path: /jsonrpc/v1/attributes.sku.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.attributes.sku.list.
+  pagination: none
+  items_path: result.product
+  keywords:
+  - attributes
+  - sku
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    partnerId:
+      type: integer
+      required: true
+    sku:
+      type: string
+      required: true
+- operation_id: v1.brands.list
+  rpc_method: brands.list
+  path: /jsonrpc/v1/brands.list
+  section: catalog
+  safety: read
+  summary: Returns a list of brands
+  pagination: none
+  items_path: result
+  keywords:
+  - brands
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('brands.list') отличается от пути ('v1.brands.list'); взято
+    значение из спеки
+  spec_conflict_severity: low
+  params:
+    method:
+      type: string
+      required: true
+    parent_promotion_id:
+      type: integer
+    promotion_id:
+      type: integer
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.categories.list
+  rpc_method: categories.list
+  path: /jsonrpc/v1/categories.list
+  section: catalog
+  safety: read
+  summary: Returns a list of axapta categories
+  pagination: none
+  items_path: result
+  keywords:
+  - categories
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('categories.list') отличается от пути ('v1.categories.list');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    method:
+      type: string
+      required: true
+    parent_promotion_id:
+      type: integer
+    promotion_id:
+      type: integer
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.category.list
+  rpc_method: v1.category.list
+  path: /jsonrpc/v1/category.list
+  section: catalog
+  safety: read
+  summary: Get axapta category list
+  pagination: none
+  items_path: ''
+  keywords:
+  - category
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.dictionaries.get
+  rpc_method: v1.dictionaries.get
+  path: /jsonrpc/v1/dictionaries.get
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.dictionaries.get.
+  pagination: none
+  items_path: result.businessModels
+  keywords:
+  - dictionaries
+  - get
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+- operation_id: v1.erp-categories.list
+  rpc_method: v1.erp-categories.list
+  path: /jsonrpc/v1/erp-categories.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.erp-categories.list.
+  pagination: none
+  items_path: result.items
+  keywords:
+  - erp
+  - categories
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+- operation_id: v1.exports.create
+  rpc_method: v1.exports.create
+  path: /jsonrpc/v1/exports.create
+  section: files
+  safety: write
+  summary: Создать выгрузку (асинхронная заявка на формирование файла).
+  pagination: none
+  items_path: ''
+  keywords:
+  - exports
+  - create
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  - создать
+  - выгрузку
+  - асинхронная
+  - заявка
+  - формирование
+  - файла
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    description:
+      type: string
+    filter:
+      type: array
+    format:
+      type: string
+      required: true
+    limit:
+      type: integer
+    sort:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+- operation_id: v1.exports.list
+  rpc_method: v1.exports.list
+  path: /jsonrpc/v1/exports.list
+  section: files
+  safety: read
+  summary: Метод Lamoda v1.exports.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - exports
+  - list
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+- operation_id: v1.fbo.warehouse.list
+  rpc_method: v1.fbo.warehouse.list
+  path: /jsonrpc/v1/fbo/warehouse.list
+  section: warehouses
+  safety: read
+  summary: Get warehouse list
+  pagination: none
+  items_path: ''
+  keywords:
+  - fbo
+  - warehouse
+  - list
+  - склады
+  - склад
+  - фбо
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.fbs.order.pack.list
+  rpc_method: fbs/order/pack.list
+  path: /jsonrpc/v1/fbs/order/pack.list
+  section: orders
+  safety: read
+  summary: Список упаковок заказа FBS.
+  pagination: page
+  items_path: result.data
+  keywords:
+  - fbs
+  - order
+  - pack
+  - list
+  - заказы
+  - заказ
+  - покупки
+  - список
+  - упаковок
+  - заказа
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: оформление имени в спеке ('fbs/order/pack.list') отличается от пути ('v1.fbs.order.pack.list');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    limit:
+      type: integer
+    order_nrs:
+      type: array
+      description: Optional filter by order numbers
+    order_status:
+      type: string
+      description: Group of statuses, e.g. group_awaiting_shipment
+    page:
+      type: integer
+    partner_id:
+      type: integer
+      required: true
+- operation_id: v1.files.get
+  rpc_method: v1.files.get
+  path: /jsonrpc/v1/files.get
+  section: files
+  safety: read
+  summary: Метод Lamoda v1.files.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - files
+  - get
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    fileImportId:
+      type: integer
+      required: true
+- operation_id: v1.imports.list
+  rpc_method: v1.imports.list
+  path: /jsonrpc/v1/imports.list
+  section: files
+  safety: read
+  summary: Метод Lamoda v1.imports.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - imports
+  - list
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    with_product_certificates:
+      type: boolean
+- operation_id: v1.label-items.get
+  rpc_method: v1.label-items.get
+  path: /jsonrpc/v1/label-items.get
+  section: labels
+  safety: read
+  summary: Получить ярлыки для товарных позиций.
+  pagination: none
+  items_path: ''
+  keywords:
+  - label
+  - items
+  - get
+  - ярлыки
+  - этикетки
+  - упаковка
+  - маркировка
+  - получить
+  - товарных
+  - позиций
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    item_nrs:
+      type: array
+      required: true
+    size:
+      type: string
+- operation_id: v1.label-packs.get
+  rpc_method: v1.label-packs.get
+  path: /jsonrpc/v1/label-packs.get
+  section: labels
+  safety: read
+  summary: Получить ярлыки для упаковок.
+  pagination: none
+  items_path: ''
+  keywords:
+  - label
+  - packs
+  - get
+  - ярлыки
+  - этикетки
+  - упаковка
+  - маркировка
+  - получить
+  - упаковок
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    pack_numbers:
+      type: array
+      required: true
+      description: Массив номеров пакетов (от 1 до 100)
+    size:
+      type: string
+      description: Размер этикетки (s - 58mm x 40mm, m - 75mm x 120mm, l - 100mm x 150mm)
+      enum:
+      - s
+      - m
+      - l
+- operation_id: v1.label-pallets.get
+  rpc_method: v1.label-pallets.get
+  path: /jsonrpc/v1/label-pallets.get
+  section: labels
+  safety: read
+  summary: Получить ярлыки для паллет.
+  pagination: none
+  items_path: ''
+  keywords:
+  - label
+  - pallets
+  - get
+  - ярлыки
+  - этикетки
+  - упаковка
+  - маркировка
+  - получить
+  - паллет
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    barcodes:
+      type: array
+      required: true
+    size:
+      type: string
+      enum:
+      - s
+      - m
+      - l
+- operation_id: v1.matching-manager.price-index.products-list-export
+  rpc_method: v1.matching-manager.price-index.products-list-export
+  path: /jsonrpc/v1/matching-manager/price-index/products-list-export
+  section: prices
+  safety: read
+  summary: Возвращает файл со списком товаров для заданного продавца
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - products
+  - list
+  - export
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - возвращает
+  - файл
+  - списком
+  - товаров
+  - заданного
+  - продавца
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.matching-manager.price-index.products-list-export.check
+  rpc_method: v1.matching-manager.price-index.products-list-export.check
+  path: /jsonrpc/v1/matching-manager/price-index/products-list-export.check
+  section: prices
+  safety: read
+  summary: Проверка готовности заявки на формирование файла для экспорта
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - products
+  - list
+  - export
+  - check
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - проверка
+  - готовности
+  - заявки
+  - формирование
+  - файла
+  - экспорта
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    task_id:
+      type: string
+      required: true
+- operation_id: v1.matching-manager.price-index.products-list-export.create
+  rpc_method: v1.matching-manager.price-index.products-list-export.create
+  path: /jsonrpc/v1/matching-manager/price-index/products-list-export.create
+  section: prices
+  safety: write
+  summary: Создание заявки на формирование файла для экспорта
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - products
+  - list
+  - export
+  - create
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - создание
+  - заявки
+  - формирование
+  - файла
+  - экспорта
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.matching-manager.price-index.products.list
+  rpc_method: v1.matching-manager.price-index.products.list
+  path: /jsonrpc/v1/matching-manager/price-index/products.list
+  section: prices
+  safety: read
+  summary: Подробный список товаров партнера. Можно сортировать, фильтровать и пагинировать список.
+  pagination: page
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - products
+  - list
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - подробный
+  - список
+  - товаров
+  - партнера
+  - можно
+  - сортировать
+  - фильтровать
+  - пагинировать
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    category_id:
+      type: string
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    price_index:
+      type: object
+    search_query:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+    sort_by:
+      type: object
+- operation_id: v1.matching-manager.price-index.settings.get
+  rpc_method: v1.matching-manager.price-index.settings.get
+  path: /jsonrpc/v1/matching-manager/price-index/settings.get
+  section: prices
+  safety: read
+  summary: Получение настроек и значений по прайс индексам
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - settings
+  - get
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - получение
+  - настроек
+  - значений
+  - индексам
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    type:
+      type: string
+      required: true
+      enum:
+      - INTERNAL
+      - PUBLIC
+- operation_id: v1.matching-manager.price-index.total.get
+  rpc_method: v1.matching-manager.price-index.total.get
+  path: /jsonrpc/v1/matching-manager/price-index/total.get
+  section: prices
+  safety: read
+  summary: Подробный прайс индекс по всем товарам селлера
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - price
+  - index
+  - total
+  - get
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - подробный
+  - индекс
+  - всем
+  - товарам
+  - селлера
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    ranges:
+      type: array
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.matching-manager.rfc.competitor-price-create.upload
+  rpc_method: v1.matching-manager.rfc.competitor-price-create.upload
+  path: /jsonrpc/v1/matching-manager/rfc/competitor-price-create.upload
+  section: prices
+  safety: write
+  summary: Массово добавить цену на товары на площадках конкурентов
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - rfc
+  - competitor
+  - price
+  - create
+  - upload
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - массово
+  - добавить
+  - цену
+  - товары
+  - площадках
+  - конкурентов
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    action_type:
+      type: string
+      required: true
+    attachment:
+      type: string
+      required: true
+      description: Excel file
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.matching-manager.rfc.competitor-price.create
+  rpc_method: v1.matching-manager.rfc.competitor-price.create
+  path: /jsonrpc/v1/matching-manager/rfc/competitor-price.create
+  section: prices
+  safety: write
+  summary: Добавление товара на определенной площадке конкурента для сравнения
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - rfc
+  - competitor
+  - price
+  - create
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - добавление
+  - товара
+  - определенной
+  - площадке
+  - конкурента
+  - сравнения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    action_type:
+      type: string
+      required: true
+    competitor_link:
+      type: string
+      description: ссылка на товар на площадке конкурента
+    is_unique_product:
+      type: boolean
+    lamoda_product_id:
+      type: string
+      required: true
+    marketplace_id:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.matching-manager.settings.get
+  rpc_method: v1.matching-manager.settings.get
+  path: /jsonrpc/v1/matching-manager/settings.get
+  section: prices
+  safety: read
+  summary: Получение настроек и значений для страницы селлера
+  pagination: none
+  items_path: ''
+  keywords:
+  - matching
+  - manager
+  - settings
+  - get
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  - получение
+  - настроек
+  - значений
+  - страницы
+  - селлера
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.nomenclature-images.list
+  rpc_method: v1.nomenclature-images.list
+  path: /jsonrpc/v1/nomenclature-images.list
+  section: content
+  safety: read
+  summary: Метод Lamoda v1.nomenclature-images.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - nomenclature
+  - images
+  - list
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.nomenclature.auto-conversion-price.calculate
+  rpc_method: v1.nomenclature.auto-conversion-price.calculate
+  path: /jsonrpc/v1/nomenclature.auto-conversion-price.calculate
+  section: catalog
+  safety: write
+  summary: Расчёт цены автоконверсии. Ценовой метод без описания — трактуется как запись.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - auto
+  - conversion
+  - price
+  - calculate
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - расчёт
+  - цены
+  - автоконверсии
+  - ценовой
+  - метод
+  - описания
+  - трактуется
+  - запись
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    partner_id:
+      type: integer
+      required: true
+    price:
+      type: number
+      description: price amount
+    sale_price:
+      type: number
+      description: sale price amount
+- operation_id: v1.nomenclature.hide-moderation
+  rpc_method: v1.nomenclature.hide-moderation
+  path: /jsonrpc/v1/nomenclature.hide-moderation
+  section: catalog
+  safety: write
+  summary: Скрыть позицию с модерации.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - hide
+  - moderation
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - скрыть
+  - позицию
+  - модерации
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    lamodaParentSku:
+      type: string
+      required: true
+      description: Lamoda parent sku
+- operation_id: v1.nomenclature.list
+  rpc_method: v1.nomenclature.list
+  path: /jsonrpc/v1/nomenclature.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclature.list.
+  pagination: page
+  items_path: result.data
+  keywords:
+  - nomenclature
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    lamoda_sku_list:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    seller_id:
+      type: integer
+      required: true
+    seller_sku_list:
+      type: array
+- operation_id: v1.nomenclature.set-price
+  rpc_method: v1.nomenclature.set-price
+  path: /jsonrpc/v1/nomenclature.set-price
+  section: catalog
+  safety: write
+  summary: Установить цену позиции номенклатуры.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - set
+  - price
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - установить
+  - цену
+  - позиции
+  - номенклатуры
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    brandName:
+      type: string
+    country:
+      type: object
+      required: true
+    force:
+      type: boolean
+      description: User approval for price change, even if products will be removed from promotions
+    lamodaParentSku:
+      type: string
+      required: true
+      description: Lamoda parent sku
+    needAutoConversion:
+      type: boolean
+    partnerId:
+      type: integer
+      required: true
+    price:
+      type: number
+      description: price amount
+    recId:
+      type: string
+    saleEndDate:
+      type: string
+    salePrice:
+      type: number
+      description: sale price amount
+    saleStartDate:
+      type: string
+    tnVed:
+      type: string
+- operation_id: v1.nomenclature.set-price-promo
+  rpc_method: v1.nomenclature.set-price-promo
+  path: /jsonrpc/v1/nomenclature.set-price-promo
+  section: catalog
+  safety: write
+  summary: Установить промо-цену позиции номенклатуры.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - set
+  - price
+  - promo
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - установить
+  - промо
+  - цену
+  - позиции
+  - номенклатуры
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    brandName:
+      type: string
+    country:
+      type: object
+      required: true
+    force:
+      type: boolean
+      description: User approval for price change, even if products will be removed from promotions
+    lamodaParentSku:
+      type: string
+      required: true
+      description: Lamoda parent sku
+    needAutoConversion:
+      type: boolean
+    partnerId:
+      type: integer
+      required: true
+    price:
+      type: number
+      description: price amount
+    recId:
+      type: string
+    saleEndDate:
+      type: string
+    salePrice:
+      type: number
+      description: sale price amount
+    saleStartDate:
+      type: string
+    tnVed:
+      type: string
+- operation_id: v1.nomenclature.update-price
+  rpc_method: v1.nomenclature.update-price
+  path: /jsonrpc/v1/nomenclature.update-price
+  section: catalog
+  safety: write
+  summary: Обновить цену позиции номенклатуры.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - update
+  - price
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - обновить
+  - цену
+  - позиции
+  - номенклатуры
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    force:
+      type: boolean
+      description: User approval for price change, even if products will be removed from promotions
+    partner_id:
+      type: integer
+      description: Partner id requires to validate fraud
+    price:
+      type: number
+      description: price amount
+    saleEndDate:
+      type: string
+    salePrice:
+      type: number
+      description: sale price amount
+    saleStartDate:
+      type: string
+    sellerSku:
+      type: string
+      required: true
+      description: Supplier sku
+- operation_id: v1.nomenclature.validate-price
+  rpc_method: v1.nomenclature.set-price
+  path: /jsonrpc/v1/nomenclature.validate-price
+  section: catalog
+  safety: write
+  summary: 'Проверка цены. ВНИМАНИЕ: спека закрепляет за этим путём method ''set-price'' — поведение не
+    подтверждено, обращаться как с записью.'
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclature
+  - validate
+  - price
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - проверка
+  - цены
+  - внимание
+  - спека
+  - закрепляет
+  - этим
+  - путём
+  - поведение
+  - подтверждено
+  - обращаться
+  - записью
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.nomenclature.set-price', а путь — 'v1.nomenclature.validate-price'.
+    Это РАЗНЫЕ операции, причём 'v1.nomenclature.set-price' существует в спеке отдельным методом. Взято
+    значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    brand_name:
+      type: string
+    country:
+      type: object
+      required: true
+    discount_percent:
+      type: integer
+    lamoda_parent_sku:
+      type: string
+      description: Lamoda parent sku
+    partner_id:
+      type: integer
+      required: true
+    price:
+      type: number
+      description: price amount
+    rec_id:
+      type: string
+    sale_end_date:
+      type: string
+    sale_price:
+      type: number
+      description: sale price amount
+    sale_start_date:
+      type: string
+    tn_ved:
+      type: string
+- operation_id: v1.nomenclature.image.list
+  rpc_method: v1.nomenclature.image.list
+  path: /jsonrpc/v1/nomenclature/image.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclature.image.list.
+  pagination: page
+  items_path: result.data
+  keywords:
+  - nomenclature
+  - image
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    lamoda_sku_list:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    resolution:
+      type: string
+      enum:
+      - default
+      - img320x461
+    seller_id:
+      type: integer
+      required: true
+    type:
+      type: string
+      enum:
+      - main
+      - additional
+- operation_id: v1.nomenclatures-metadata.count-by-statuses
+  rpc_method: v1.nomenclatures-metadata.count-by-statuses
+  path: /jsonrpc/v1/nomenclatures-metadata.count-by-statuses
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclatures-metadata.count-by-statuses.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclatures
+  - metadata
+  - count
+  - statuses
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+- operation_id: v1.nomenclatures-metadata.get-axapta-categories
+  rpc_method: v1.nomenclatures.metadata.get-axapta-categories
+  path: /jsonrpc/v1/nomenclatures-metadata.get-axapta-categories
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclatures-metadata.get-axapta-categories.
+  pagination: none
+  items_path: result
+  keywords:
+  - nomenclatures
+  - metadata
+  - get
+  - axapta
+  - categories
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.nomenclatures.metadata.get-axapta-categories', а путь —
+    'v1.nomenclatures-metadata.get-axapta-categories'. Это РАЗНЫЕ операции. Взято значение из спеки; перед
+    реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    filter:
+      type: array
+- operation_id: v1.nomenclatures-metadata.get-brands
+  rpc_method: v1.nomenclatures-metadata.get-brands
+  path: /jsonrpc/v1/nomenclatures-metadata.get-brands
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclatures-metadata.get-brands.
+  pagination: none
+  items_path: result
+  keywords:
+  - nomenclatures
+  - metadata
+  - get
+  - brands
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+- operation_id: v1.nomenclatures.auto-conversion-prices.get
+  rpc_method: v1.nomenclatures.auto-conversion-prices.get
+  path: /jsonrpc/v1/nomenclatures.auto-conversion-prices.get
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclatures.auto-conversion-prices.get.
+  pagination: none
+  items_path: result.items
+  keywords:
+  - nomenclatures
+  - auto
+  - conversion
+  - prices
+  - get
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    filter:
+      type: array
+      required: true
+- operation_id: v1.nomenclatures.list
+  rpc_method: v1.nomenclatures.list
+  path: /jsonrpc/v1/nomenclatures.list
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v1.nomenclatures.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - nomenclatures
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    excludePrices:
+      type: boolean
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+    with_price_index:
+      type: boolean
+- operation_id: v1.nomenclatures.prices-approve
+  rpc_method: nomenclatures.prices-approve
+  path: /jsonrpc/v1/nomenclatures.prices-approve
+  section: catalog
+  safety: write
+  summary: Подтвердить изменение цен по номенклатуре.
+  pagination: none
+  items_path: ''
+  keywords:
+  - nomenclatures
+  - prices
+  - approve
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - подтвердить
+  - изменение
+  - номенклатуре
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: оформление имени в спеке ('nomenclatures.prices-approve') отличается от пути ('v1.nomenclatures.prices-approve');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    approve_prices:
+      type: array
+      required: true
+    partner_id:
+      type: integer
+      required: true
+- operation_id: v1.nomenclatures.set-prices
+  rpc_method: v1.nomenclatures.set-prices
+  path: /jsonrpc/v1/nomenclatures.set-prices
+  section: catalog
+  safety: write
+  summary: Установить цены по номенклатуре списком.
+  pagination: none
+  items_path: result.errors
+  keywords:
+  - nomenclatures
+  - set
+  - prices
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - установить
+  - цены
+  - номенклатуре
+  - списком
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: object
+      required: true
+    force:
+      type: boolean
+      description: User approval for price change, even if products will be removed from promotions
+    partner_id:
+      type: integer
+      required: true
+    prices:
+      type: array
+      required: true
+- operation_id: v1.nomenclatures.store
+  rpc_method: v1.nomenclatures.store
+  path: /jsonrpc/v1/nomenclatures.store
+  section: catalog
+  safety: write
+  summary: Сохранить номенклатуру (создание или обновление карточек).
+  pagination: none
+  items_path: result.errors
+  keywords:
+  - nomenclatures
+  - store
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - сохранить
+  - номенклатуру
+  - создание
+  - обновление
+  - карточек
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: string
+    nomenclature:
+      type: object
+      required: true
+    partnerId:
+      type: integer
+      required: true
+    price:
+      type: object
+    prices:
+      type: array
+    productSyntheticId:
+      type: string
+- operation_id: v1.nomenclatures.update-activation
+  rpc_method: v1.nomenclatures.update-activation
+  path: /jsonrpc/v1/nomenclatures.update-activation
+  section: catalog
+  safety: write
+  summary: Включить или выключить позиции номенклатуры.
+  pagination: none
+  items_path: result.errors
+  keywords:
+  - nomenclatures
+  - update
+  - activation
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - включить
+  - выключить
+  - позиции
+  - номенклатуры
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    active:
+      type: boolean
+    country:
+      type: string
+      required: true
+    filter:
+      type: array
+      required: true
+- operation_id: v1.nomenclatures.update-price
+  rpc_method: v1.nomenclatures.update-price
+  path: /jsonrpc/v1/nomenclatures.update-price
+  section: catalog
+  safety: write
+  summary: Обновить цены по номенклатуре.
+  pagination: none
+  items_path: result.errors
+  keywords:
+  - nomenclatures
+  - update
+  - price
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - обновить
+  - цены
+  - номенклатуре
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    country:
+      type: string
+    discountPercent:
+      type: integer
+    filter:
+      type: array
+    force:
+      type: boolean
+      description: User approval for price change, even if products will be removed from promotions
+    price:
+      type: number
+      description: price amount
+    saleEndDate:
+      type: string
+    salePrice:
+      type: number
+      description: sale price amount
+    saleStartDate:
+      type: string
+- operation_id: v1.nomenclatures.update-stock
+  rpc_method: v1.nomenclatures.update-stock
+  path: /jsonrpc/v1/nomenclatures.update-stock
+  section: catalog
+  safety: write
+  summary: Обновить остатки по номенклатуре.
+  pagination: none
+  items_path: result.errors
+  keywords:
+  - nomenclatures
+  - update
+  - stock
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  - обновить
+  - остатки
+  - номенклатуре
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    stock:
+      type: integer
+      description: stock quantity
+- operation_id: v1.offer-statuses.list
+  rpc_method: v1.offer-statuses.list
+  path: /jsonrpc/v1/offer-statuses.list
+  section: offers
+  safety: read
+  summary: Метод Lamoda v1.offer-statuses.list.
+  pagination: none
+  items_path: result.offerStatuses
+  keywords:
+  - offer
+  - statuses
+  - list
+  - офферы
+  - оффер
+  - предложения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+- operation_id: v1.offers.approve
+  rpc_method: v1.offers.approve
+  path: /jsonrpc/v1/offers.approve
+  section: offers
+  safety: write
+  summary: Подтвердить офферы.
+  pagination: none
+  items_path: ''
+  keywords:
+  - offers
+  - approve
+  - офферы
+  - оффер
+  - предложения
+  - подтвердить
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    newestOfferId:
+      type: integer
+      required: true
+      description: Specified offer and all previous ones will be approved
+    partnerId:
+      type: integer
+      required: true
+- operation_id: v1.offers.list
+  rpc_method: v1.offers.list
+  path: /jsonrpc/v1/offers.list
+  section: offers
+  safety: read
+  summary: Метод Lamoda v1.offers.list.
+  pagination: none
+  items_path: ''
+  keywords:
+  - offers
+  - list
+  - офферы
+  - оффер
+  - предложения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    partnerId:
+      type: integer
+- operation_id: v1.order-item-statuses.list
+  rpc_method: v1.order-item-statuses.list
+  path: /jsonrpc/v1/order-item-statuses.list
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.order-item-statuses.list.
+  pagination: none
+  items_path: result.itemStatuses
+  keywords:
+  - order
+  - item
+  - statuses
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+    limit:
+      type: integer
+- operation_id: v1.order-pack-numbers.get
+  rpc_method: v1.order-pack-numbers.get
+  path: /jsonrpc/v1/order-pack-numbers.get
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.order-pack-numbers.get.
+  pagination: none
+  items_path: result.packNumbers
+  keywords:
+  - order
+  - pack
+  - numbers
+  - get
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+      description: Lamoda B2B partner order number
+    packQuantity:
+      type: integer
+      required: true
+- operation_id: v1.order-statuses.list
+  rpc_method: v1.order-statuses.list
+  path: /jsonrpc/v1/order-statuses.list
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.order-statuses.list.
+  pagination: none
+  items_path: result.orderStatuses
+  keywords:
+  - order
+  - statuses
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+    limit:
+      type: integer
+- operation_id: v1.order.reset
+  rpc_method: v1.order.reset
+  path: /jsonrpc/v1/order.reset
+  section: orders
+  safety: destructive
+  summary: Сброс состояния заказа. Необратимо, служебный метод Lamoda.
+  pagination: none
+  items_path: ''
+  keywords:
+  - order
+  - reset
+  - заказы
+  - заказ
+  - покупки
+  - сброс
+  - состояния
+  - заказа
+  - необратимо
+  - служебный
+  - метод
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    order_nr:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.order.item.list
+  rpc_method: v1.order.item.list
+  path: /jsonrpc/v1/order/item.list
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.order.item.list.
+  pagination: page
+  items_path: result.data
+  keywords:
+  - order
+  - item
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+- operation_id: v1.orders-count-by-statuses.get
+  rpc_method: v1.orders-count-by-statuses.get
+  path: /jsonrpc/v1/orders-count-by-statuses.get
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.orders-count-by-statuses.get.
+  pagination: none
+  items_path: result.count
+  keywords:
+  - orders
+  - count
+  - statuses
+  - get
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+- operation_id: v1.orders.get
+  rpc_method: v1.orders.get
+  path: /jsonrpc/v1/orders.get
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.orders.get.
+  pagination: none
+  items_path: result.items
+  keywords:
+  - orders
+  - get
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+    limit:
+      type: integer
+- operation_id: v1.orders.list
+  rpc_method: v1.orders.list
+  path: /jsonrpc/v1/orders.list
+  section: orders
+  safety: read
+  summary: Метод Lamoda v1.orders.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - orders
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.partner.list
+  rpc_method: v1.partner.list
+  path: /jsonrpc/v1/partner.list
+  section: account
+  safety: read
+  summary: Метод Lamoda v1.partner.list.
+  pagination: page
+  items_path: result.partners
+  keywords:
+  - partner
+  - list
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+- operation_id: v1.partners.activate_in_ui
+  rpc_method: v1.partners.activate_in_ui
+  path: /jsonrpc/v1/partners.activate_in_ui
+  section: account
+  safety: write
+  summary: Активировать партнёра в интерфейсе.
+  pagination: none
+  items_path: ''
+  keywords:
+  - partners
+  - activate
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  - активировать
+  - партнёра
+  - интерфейсе
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    partnerId:
+      type: integer
+      required: true
+- operation_id: v1.price-history.file.get
+  rpc_method: price-history-file.get
+  path: /jsonrpc/v1/price-history/file.get
+  section: files
+  safety: read
+  summary: Returns .xlsx with product price history
+  pagination: none
+  items_path: ''
+  keywords:
+  - price
+  - history
+  - file
+  - get
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'price-history-file.get', а путь — 'v1.price-history.file.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    country:
+      type: string
+      required: true
+      enum:
+      - RU
+      - BY
+      - KZ
+      - UA
+    lamoda_parent_sku:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.prices.validation-report.get
+  rpc_method: prices-validation-report.get
+  path: /jsonrpc/v1/prices/validation-report.get
+  section: validation
+  safety: read
+  summary: Returns detailed fraud validation report in xlsx
+  pagination: none
+  items_path: ''
+  keywords:
+  - prices
+  - validation
+  - report
+  - get
+  - валидация
+  - проверка
+  - ошибки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'prices-validation-report.get', а путь — 'v1.prices.validation-report.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    country:
+      type: object
+      required: true
+    prices:
+      type: array
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.products-add
+  rpc_method: products.add
+  path: /jsonrpc/v1/products-add
+  section: products
+  safety: write
+  summary: Add products to promotion API
+  pagination: none
+  items_path: result.validation
+  keywords:
+  - products
+  - add
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'products.add', а путь — 'v1.products-add'. Это РАЗНЫЕ операции.
+    Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    all_products:
+      type: boolean
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    product_ids:
+      type: array
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+- operation_id: v1.products-added.report
+  rpc_method: products-added.report
+  path: /jsonrpc/v1/products-added.report
+  section: products
+  safety: read
+  summary: Export .xlsx with products added to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - added
+  - report
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products-added.report') отличается от пути ('v1.products-added.report');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.products-added.total
+  rpc_method: products-added.total
+  path: /jsonrpc/v1/products-added.total
+  section: products
+  safety: read
+  summary: Returns a total of products already added to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - added
+  - total
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products-added.total') отличается от пути ('v1.products-added.total');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v1.products.added
+  rpc_method: products.added
+  path: /jsonrpc/v1/products.added
+  section: products
+  safety: read
+  summary: Returns a list of products added to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - added
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products.added') отличается от пути ('v1.products.added');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    limit:
+      type: integer
+      required: true
+    offset:
+      type: integer
+      required: true
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    sort_by:
+      type: string
+      enum:
+      - lamoda_discount_percent
+    sort_order:
+      type: string
+      enum:
+      - ASC
+      - DESC
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v1.products.delete
+  rpc_method: products.delete
+  path: /jsonrpc/v1/products.delete
+  section: products
+  safety: destructive
+  summary: Remove products from promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - delete
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products.delete') отличается от пути ('v1.products.delete');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    all_products:
+      type: boolean
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    product_ids:
+      type: array
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+- operation_id: v1.products.list
+  rpc_method: products.list
+  path: /jsonrpc/v1/products.list
+  section: products
+  safety: read
+  summary: List products available for adding to specified promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - list
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products.list') отличается от пути ('v1.products.list'); взято
+    значение из спеки
+  spec_conflict_severity: low
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    is_fraud_threshold_exceeded:
+      type: boolean
+      description: Означает, что цена превышает допустимый порог для добавления в акцию
+    limit:
+      type: integer
+      required: true
+    offset:
+      type: integer
+      required: true
+    promotion_id:
+      type: integer
+      required: true
+    recommended_metrics:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+    show_only_recommended:
+      type: boolean
+      description: Показывать только рекомендуемые (для баннера на странице акции)
+    value:
+      type: string
+- operation_id: v1.products.price-threshold-exceeded
+  rpc_method: products.price-threshold-exceeded
+  path: /jsonrpc/v1/products.price-threshold-exceeded
+  section: products
+  safety: read
+  summary: Fraud validation. Check if there are products with price threshold exeeded
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - price
+  - threshold
+  - exceeded
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products.price-threshold-exceeded') отличается от пути ('v1.products.price-threshold-exceeded');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.products.set-recommended-prices
+  rpc_method: products.set-recommended-prices
+  path: /jsonrpc/v1/products.set-recommended-prices
+  section: products
+  safety: write
+  summary: Set recommended price for fraud products
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - set
+  - recommended
+  - prices
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('products.set-recommended-prices') отличается от пути ('v1.products.set-recommended-prices');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    lamoda_parent_skus:
+      type: array
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.products.total
+  rpc_method: products.list
+  path: /jsonrpc/v1/products.total
+  section: products
+  safety: read
+  summary: Returns a total of products in order to add to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - total
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'products.list', а путь — 'v1.products.total'. Это РАЗНЫЕ
+    операции, причём 'products.list' существует в спеке отдельным методом. Взято значение из спеки; перед
+    реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    is_fraud_threshold_exceeded:
+      type: boolean
+      description: Означает, что цена превышает допустимый порог для добавления в акцию
+    only_available_to_add:
+      type: boolean
+      description: Передать для получения расчета, исключающего невозможные к добавлению
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    show_only_recommended:
+      type: boolean
+      description: Показывать только рекомендуемые (для баннера на странице акции)
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v1.promo.product-price-statuses.list
+  rpc_method: product-price-statuses.list
+  path: /jsonrpc/v1/promo/product-price-statuses.list
+  section: prices
+  safety: read
+  summary: Returns a list of product price statuses
+  pagination: none
+  items_path: ''
+  keywords:
+  - promo
+  - product
+  - price
+  - statuses
+  - list
+  - цены
+  - цена
+  - прайс
+  - ценовой индекс
+  - конкуренты
+  - скидка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'product-price-statuses.list', а путь — 'v1.promo.product-price-statuses.list'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    lamoda_parent_sku_list:
+      type: array
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.promo.promotion-products.template
+  rpc_method: promotion-products.template
+  path: /jsonrpc/v1/promo/promotion-products.template
+  section: products
+  safety: read
+  summary: Returns .xlsx template with filled products list
+  pagination: none
+  items_path: ''
+  keywords:
+  - promo
+  - promotion
+  - products
+  - template
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'promotion-products.template', а путь — 'v1.promo.promotion-products.template'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    promotion_id:
+      type: integer
+      required: true
+    promotion_type:
+      type: string
+      enum:
+      - onsite
+      - onsite_float
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.promotion.fraud-products-report.get
+  rpc_method: fraud-products-report.get
+  path: /jsonrpc/v1/promotion/fraud-products-report.get
+  section: products
+  safety: read
+  summary: Export .xlsx report with price-fraud reasons info per product per promo-variant
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotion
+  - fraud
+  - products
+  - report
+  - get
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'fraud-products-report.get', а путь — 'v1.promotion.fraud-products-report.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.promotions.finished
+  rpc_method: promotions.finished
+  path: /jsonrpc/v1/promotions.finished
+  section: promotions
+  safety: read
+  summary: Returns a list of grouped finished promotions
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotions
+  - finished
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('promotions.finished') отличается от пути ('v1.promotions.finished');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    limit:
+      type: integer
+      required: true
+    offset:
+      type: integer
+      required: true
+    parent_promotion_id:
+      type: integer
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.promotions.get
+  rpc_method: promotions.get
+  path: /jsonrpc/v1/promotions.get
+  section: promotions
+  safety: read
+  summary: Returns the promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotions
+  - get
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('promotions.get') отличается от пути ('v1.promotions.get');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.promotions.get-id
+  rpc_method: promotions.get-id
+  path: /jsonrpc/v1/promotions.get-id
+  section: promotions
+  safety: read
+  summary: Returns the promotion id
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotions
+  - get
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('promotions.get-id') отличается от пути ('v1.promotions.get-id');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    type:
+      type: string
+      required: true
+      enum:
+      - parent_promotion_uuid
+      - promotion_uuid
+    uuid:
+      type: string
+      required: true
+- operation_id: v1.promotions.list
+  rpc_method: promotions.list
+  path: /jsonrpc/v1/promotions.list
+  section: promotions
+  safety: read
+  summary: Returns a list of available promotions
+  pagination: none
+  items_path: result.promotions
+  keywords:
+  - promotions
+  - list
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('promotions.list') отличается от пути ('v1.promotions.list');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.recommended-metrics.list
+  rpc_method: v1.recommended-metrics.list
+  path: /jsonrpc/v1/recommended-metrics.list
+  section: products
+  safety: read
+  summary: Returns a list of recommended metrics
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - metrics
+  - list
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.recommended-products.add
+  rpc_method: v1.recommended-products.add
+  path: /jsonrpc/v1/recommended-products.add
+  section: products
+  safety: write
+  summary: Add recommended products to promotion API. The response must generate a template with a report
+    about adding.
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - add
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    all_products:
+      type: boolean
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    product_ids:
+      type: array
+    promotion_id:
+      type: integer
+      required: true
+    recommended_metrics:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+- operation_id: v1.recommended-products.list
+  rpc_method: recommended-products.list
+  path: /jsonrpc/v1/recommended-products.list
+  section: products
+  safety: read
+  summary: Get list of recommended products by partner and promo
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - list
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('recommended-products.list') отличается от пути ('v1.recommended-products.list');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    limit:
+      type: integer
+      required: true
+    offset:
+      type: integer
+    recommended_metrics:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v1.recommended-products.template
+  rpc_method: v1.recommended-products.template
+  path: /jsonrpc/v1/recommended-products.template
+  section: products
+  safety: read
+  summary: Initiates template file asynchronous generation. Result file will be stored with seller-file-manager
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - template
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.recommended-products.total
+  rpc_method: v1.recommended-products.total
+  path: /jsonrpc/v1/recommended-products.total
+  section: products
+  safety: read
+  summary: Get total recommended products by partner and promo
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - total
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    recommended_metrics:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v1.resellers.list
+  rpc_method: v1.resellers.list
+  path: /jsonrpc/v1/resellers.list
+  section: account
+  safety: read
+  summary: Метод Lamoda v1.resellers.list.
+  pagination: none
+  items_path: result.resellers
+  keywords:
+  - resellers
+  - list
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+- operation_id: v1.return-boxes-items.list
+  rpc_method: v1.return-boxes-items.list
+  path: /jsonrpc/v1/return-boxes-items.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.return-boxes-items.list.
+  pagination: page
+  items_path: result.items
+  keywords:
+  - return
+  - boxes
+  - items
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    box_code:
+      type: array
+      required: true
+      description: Unique identifiers of the return box to retrieve details for. Must be provided.
+    country:
+      type: object
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.return-boxes-statuses.list
+  rpc_method: v1.return-boxes-statuses.list
+  path: /jsonrpc/v1/return-boxes-statuses.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.return-boxes-statuses.list.
+  pagination: none
+  items_path: result
+  keywords:
+  - return
+  - boxes
+  - statuses
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    code:
+      type: string
+      required: true
+      description: Unique identifier of the return box to retrieve details for. Must be provided.
+- operation_id: v1.return-boxes.count-by-statuses
+  rpc_method: v1.return-boxes.count-by-statuses
+  path: /jsonrpc/v1/return-boxes.count-by-statuses
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.return-boxes.count-by-statuses.
+  pagination: none
+  items_path: ''
+  keywords:
+  - return
+  - boxes
+  - count
+  - statuses
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    partner_id:
+      type: integer
+      required: true
+- operation_id: v1.return-boxes.get
+  rpc_method: v1.return-boxes.get
+  path: /jsonrpc/v1/return-boxes.get
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.return-boxes.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - return
+  - boxes
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    code:
+      type: string
+      required: true
+      description: Unique identifier of the return box to retrieve details for. Must be provided.
+- operation_id: v1.return-boxes.list
+  rpc_method: v1.return-boxes.list
+  path: /jsonrpc/v1/return-boxes.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.return-boxes.list.
+  pagination: page
+  items_path: result.boxes
+  keywords:
+  - return
+  - boxes
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.seller-brands.get
+  rpc_method: seller-brands.get
+  path: /jsonrpc/v1/seller-brands.get
+  section: catalog
+  safety: read
+  summary: Returns brands of specified partner
+  pagination: none
+  items_path: result
+  keywords:
+  - seller
+  - brands
+  - get
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('seller-brands.get') отличается от пути ('v1.seller-brands.get');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    filter:
+      type: array
+      required: true
+      description: filter by partnerId
+- operation_id: v1.seller-profile.get
+  rpc_method: seller-profile.get
+  path: /jsonrpc/v1/seller-profile.get
+  section: files
+  safety: read
+  summary: Returns partner's profile info
+  pagination: none
+  items_path: result.contracts
+  keywords:
+  - seller
+  - profile
+  - get
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('seller-profile.get') отличается от пути ('v1.seller-profile.get');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    partner_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-profile.personal.update
+  rpc_method: v1.seller-profile-personal.update
+  path: /jsonrpc/v1/seller-profile/personal.update
+  section: files
+  safety: write
+  summary: Update partner's personal info
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - profile
+  - personal
+  - update
+  - файлы
+  - импорт
+  - экспорт
+  - выгрузка
+  - загрузка
+  - изображения
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.seller-profile-personal.update', а путь — 'v1.seller-profile.personal.update'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    name:
+      type: string
+    phone:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return-fbs.anomaly-box.list
+  rpc_method: v1.seller-return-fbs.anomaly-box.list
+  path: /jsonrpc/v1/seller-return-fbs/anomaly-box.list
+  section: returns
+  safety: read
+  summary: List anomaly boxes with filters, pagination, and sorting
+  pagination: page
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - anomaly
+  - box
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+      required: true
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    sort:
+      type: string
+- operation_id: v1.seller-return-fbs.box-status.list
+  rpc_method: v1.seller-return-fbs.box-status.list
+  path: /jsonrpc/v1/seller-return-fbs/box-status.list
+  section: returns
+  safety: read
+  summary: List statuses for a return box by code
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - box
+  - status
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return-fbs.box.get
+  rpc_method: v1.seller-return-fbs.box.get
+  path: /jsonrpc/v1/seller-return-fbs/box.get
+  section: returns
+  safety: read
+  summary: Get return box by code
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - box
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return-fbs.box.list
+  rpc_method: v1.seller-return-fbs.box.list
+  path: /jsonrpc/v1/seller-return-fbs/box.list
+  section: returns
+  safety: read
+  summary: List return boxes with filters, pagination, and sorting
+  pagination: page
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - box
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+      required: true
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    sort:
+      type: string
+- operation_id: v1.seller-return-fbs.exports.create
+  rpc_method: v1.seller-return-fbs.exports.create
+  path: /jsonrpc/v1/seller-return-fbs/exports.create
+  section: orders
+  safety: write
+  summary: Создать выгрузку по возвратам селлера.
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - exports
+  - create
+  - заказы
+  - заказ
+  - покупки
+  - создать
+  - выгрузку
+  - возвратам
+  - селлера
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    description:
+      type: string
+      description: Описание выгрузки
+    filter:
+      type: array
+      description: Объединённый фильтр; допустимые ключи зависят от type
+    format:
+      type: string
+      required: true
+      description: Формат файла выгрузки
+      enum:
+      - xlsx
+    limit:
+      type: integer
+      description: Максимальное количество строк в файле
+    seller_id:
+      type: integer
+      required: true
+    sort:
+      type: string
+      description: Поле сортировки, как в соответствующих list-эндпоинтах
+    type:
+      type: string
+      required: true
+      description: Тип выгрузки
+      enum:
+      - return_items
+      - anomaly_boxes
+- operation_id: v1.seller-return-fbs.item-statistics.get
+  rpc_method: v1.seller-return-fbs.item-statistics.get
+  path: /jsonrpc/v1/seller-return-fbs/item-statistics.get
+  section: orders
+  safety: read
+  summary: Get item statistics by seller_id
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - item
+  - statistics
+  - get
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return-fbs.item-status.list
+  rpc_method: v1.seller-return-fbs.item-status.list
+  path: /jsonrpc/v1/seller-return-fbs/item-status.list
+  section: orders
+  safety: read
+  summary: List statuses for a return item by item_nr
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - item
+  - status
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    item_nr:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return-fbs.items.list
+  rpc_method: v1.seller-return-fbs.items.list
+  path: /jsonrpc/v1/seller-return-fbs/items.list
+  section: orders
+  safety: read
+  summary: List return items with filters, pagination, and sorting
+  pagination: page
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - items
+  - list
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+      required: true
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    sort:
+      type: string
+- operation_id: v1.seller-return-fbs.statistics.get
+  rpc_method: v1.seller-return-fbs.statistics.get
+  path: /jsonrpc/v1/seller-return-fbs/statistics.get
+  section: orders
+  safety: read
+  summary: Get return statistics by seller and box type
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - fbs
+  - statistics
+  - get
+  - заказы
+  - заказ
+  - покупки
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    box_type:
+      type: string
+      required: true
+      enum:
+      - anomaly
+      - return
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.seller-return.status-history.get
+  rpc_method: v1.supplierReturn.getStatusList
+  path: /jsonrpc/v1/seller-return/status-history.get
+  section: general
+  safety: read
+  summary: Метод Lamoda v1.seller-return.status-history.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - seller
+  - return
+  - status
+  - history
+  - get
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.supplierReturn.getStatusList', а путь — 'v1.seller-return.status-history.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.shipment-items.list
+  rpc_method: v1.shipment-items.list
+  path: /jsonrpc/v1/shipment-items.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipment-items.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - shipment
+  - items
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+- operation_id: v1.shipment-statuses.list
+  rpc_method: v1.shipment-statuses.list
+  path: /jsonrpc/v1/shipment-statuses.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipment-statuses.list.
+  pagination: none
+  items_path: result.shipmentStatuses
+  keywords:
+  - shipment
+  - statuses
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    shipmentId:
+      type: string
+      required: true
+- operation_id: v1.shipment.create
+  rpc_method: v1.shipment.create
+  path: /jsonrpc/v1/shipment.create
+  section: shipments
+  safety: write
+  summary: Creating a new shipment
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipment
+  - create
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    pallets:
+      type: array
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.shipments-count-by-statuses.get
+  rpc_method: v1.shipments-count-by-statuses.get
+  path: /jsonrpc/v1/shipments-count-by-statuses.get
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments-count-by-statuses.get.
+  pagination: none
+  items_path: result.count
+  keywords:
+  - shipments
+  - count
+  - statuses
+  - get
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+- operation_id: v1.shipments-fulfilment-items.list
+  rpc_method: v1.shipments-fulfilment-items.list
+  path: /jsonrpc/v1/shipments-fulfilment-items.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments-fulfilment-items.list.
+  pagination: page
+  items_path: result.fulfilmentShipmentItems
+  keywords:
+  - shipments
+  - fulfilment
+  - items
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    id:
+      type: string
+      required: true
+    limit:
+      type: integer
+    page:
+      type: integer
+- operation_id: v1.shipments-fulfilment-statuses.list
+  rpc_method: v1.shipments-fulfilment-statuses.list
+  path: /jsonrpc/v1/shipments-fulfilment-statuses.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments-fulfilment-statuses.list.
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipments
+  - fulfilment
+  - statuses
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+- operation_id: v1.shipments-fulfilment.get
+  rpc_method: v1.shipments-fulfilment.list
+  path: /jsonrpc/v1/shipments-fulfilment.get
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments-fulfilment.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipments
+  - fulfilment
+  - get
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.shipments-fulfilment.list', а путь — 'v1.shipments-fulfilment.get'.
+    Это РАЗНЫЕ операции, причём 'v1.shipments-fulfilment.list' существует в спеке отдельным методом. Взято
+    значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    id:
+      type: string
+      required: true
+- operation_id: v1.shipments-fulfilment.list
+  rpc_method: v1.shipments-fulfilment.list
+  path: /jsonrpc/v1/shipments-fulfilment.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments-fulfilment.list.
+  pagination: page
+  items_path: result.fulfilmentShipments
+  keywords:
+  - shipments
+  - fulfilment
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.shipments-fulfilment.update-events
+  rpc_method: v1.shipments-fulfilment.update-events
+  path: /jsonrpc/v1/shipments-fulfilment.update-events
+  section: shipments
+  safety: write
+  summary: Обновить события отгрузки фулфилмента.
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipments
+  - fulfilment
+  - update
+  - events
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  - обновить
+  - события
+  - фулфилмента
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    id:
+      type: string
+      required: true
+    rejectReasonId:
+      type: string
+      enum:
+      - duplicated
+      - actuality
+      - docs
+      - date
+      - size
+    type:
+      type: string
+      required: true
+      enum:
+      - reject
+- operation_id: v1.shipments.get
+  rpc_method: v1.shipments.get
+  path: /jsonrpc/v1/shipments.get
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipments
+  - get
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    shipmentId:
+      type: string
+      required: true
+- operation_id: v1.shipments.list
+  rpc_method: v1.shipments.list
+  path: /jsonrpc/v1/shipments.list
+  section: shipments
+  safety: read
+  summary: Метод Lamoda v1.shipments.list.
+  pagination: page
+  items_path: ''
+  keywords:
+  - shipments
+  - list
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    sort:
+      type: string
+- operation_id: v1.shipments.update-events
+  rpc_method: v1.shipments.update-events
+  path: /jsonrpc/v1/shipments.update-events
+  section: shipments
+  safety: write
+  summary: Обновить события отгрузки.
+  pagination: none
+  items_path: ''
+  keywords:
+  - shipments
+  - update
+  - events
+  - отгрузки
+  - отгрузка
+  - поставка
+  - доставка
+  - обновить
+  - события
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    shipmentId:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+- operation_id: v1.stock-illiquid-report.download
+  rpc_method: v2.stockIlliquidReport.download
+  path: /jsonrpc/v1/stock-illiquid-report.download
+  section: stocks
+  safety: read
+  summary: Get stock illiquid report uuid
+  pagination: none
+  items_path: ''
+  keywords:
+  - stock
+  - illiquid
+  - report
+  - download
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v2.stockIlliquidReport.download') отличается от пути ('v1.stock-illiquid-report.download');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    axapta_category_id:
+      type: array
+    brand_id:
+      type: integer
+    search:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+    unitload_list:
+      type: array
+    warehouse_code:
+      type: string
+- operation_id: v1.stock-report.download
+  rpc_method: v1.stockReport.download
+  path: /jsonrpc/v1/stock-report.download
+  section: stocks
+  safety: read
+  summary: Get stock report link
+  pagination: none
+  items_path: ''
+  keywords:
+  - stock
+  - report
+  - download
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.stockReport.download') отличается от пути ('v1.stock-report.download');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    axapta_category_id:
+      type: array
+    brand_id:
+      type: integer
+    search:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+    sku_list:
+      type: array
+    with_zero_quantity:
+      type: boolean
+- operation_id: v1.stock.list
+  rpc_method: v1.stock.list
+  path: /jsonrpc/v1/stock.list
+  section: stocks
+  safety: read
+  summary: Метод Lamoda v1.stock.list.
+  pagination: page
+  items_path: result.data
+  keywords:
+  - stock
+  - list
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  params:
+    lamoda_sku_list:
+      type: array
+    limit:
+      type: integer
+    page:
+      type: integer
+    seller_id:
+      type: integer
+      required: true
+    seller_sku_list:
+      type: array
+    warehouse_code:
+      type: string
+- operation_id: v1.stocks-illiquid.list
+  rpc_method: v1.stocks-illiquid.list
+  path: /jsonrpc/v1/stocks-illiquid.list
+  section: stocks
+  safety: read
+  summary: Get illiquid stock list
+  pagination: page
+  items_path: ''
+  keywords:
+  - stocks
+  - illiquid
+  - list
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    axapta_category_id:
+      type: array
+    brand_id:
+      type: integer
+    limit:
+      type: integer
+    page:
+      type: integer
+    search:
+      type: string
+      description: запрос для поиска по lamoda_sku, sku, name
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.stocks.summary
+  rpc_method: v1.stocks.summary
+  path: /jsonrpc/v1/stocks.summary
+  section: stocks
+  safety: read
+  summary: Get stock summary for seller
+  pagination: none
+  items_path: ''
+  keywords:
+  - stocks
+  - summary
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-fulfilment-returns-items.list
+  rpc_method: v1.supplier-fulfilment-returns-items.list
+  path: /jsonrpc/v1/supplier-fulfilment-returns-items.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns-items.list.
+  pagination: page
+  items_path: result.supplierFulfilmentReturnItems
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - items
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    returnId:
+      type: string
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.get
+  rpc_method: v1.supplier-fulfilment-returns.get
+  path: /jsonrpc/v1/supplier-fulfilment-returns.get
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.get.
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    returnId:
+      type: string
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.list
+  rpc_method: v1.supplier-fulfilment-returns.list
+  path: /jsonrpc/v1/supplier-fulfilment-returns.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.list.
+  pagination: page
+  items_path: result.supplierFulfilmentReturns
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    filter:
+      type: array
+      required: true
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.update-events
+  rpc_method: v1.supplier-fulfilment-returns.update-events
+  path: /jsonrpc/v1/supplier-fulfilment-returns.update-events
+  section: returns
+  safety: write
+  summary: Обновить события возврата фулфилмента.
+  pagination: none
+  items_path: result.data
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - update
+  - events
+  - возвраты
+  - возврат
+  - короба
+  - обновить
+  - события
+  - возврата
+  - фулфилмента
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    returnId:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+      enum:
+      - confirm
+- operation_id: v1.supplier-fulfilment-returns.warehouse-events.get
+  rpc_method: v1.supplier-fulfilment-returns/warehouse-events.get
+  path: /jsonrpc/v1/supplier-fulfilment-returns/warehouse-events.get
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.warehouse-events.get.
+  pagination: none
+  items_path: result.products
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - warehouse
+  - events
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplier-fulfilment-returns/warehouse-events.get') отличается
+    от пути ('v1.supplier-fulfilment-returns.warehouse-events.get'); взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    id:
+      type: integer
+      required: true
+    returnId:
+      type: string
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.warehouse-events.list
+  rpc_method: v1.supplier-fulfilment-returns/warehouse-events.list
+  path: /jsonrpc/v1/supplier-fulfilment-returns/warehouse-events.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.warehouse-events.list.
+  pagination: none
+  items_path: result.warehouseEvents
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - warehouse
+  - events
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplier-fulfilment-returns/warehouse-events.list') отличается
+    от пути ('v1.supplier-fulfilment-returns.warehouse-events.list'); взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    returnId:
+      type: string
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.warehouse-reports.get
+  rpc_method: v1.supplier-fulfilment-returns/warehouse-reports.get
+  path: /jsonrpc/v1/supplier-fulfilment-returns/warehouse-reports.get
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.warehouse-reports.get.
+  pagination: none
+  items_path: result.products
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - warehouse
+  - reports
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplier-fulfilment-returns/warehouse-reports.get') отличается
+    от пути ('v1.supplier-fulfilment-returns.warehouse-reports.get'); взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    returnId:
+      type: string
+      required: true
+    warehouseCode:
+      type: string
+      required: true
+- operation_id: v1.supplier-fulfilment-returns.warehouse-reports.list
+  rpc_method: v1.supplier-fulfilment-returns/warehouse-reports.list
+  path: /jsonrpc/v1/supplier-fulfilment-returns/warehouse-reports.list
+  section: returns
+  safety: read
+  summary: Метод Lamoda v1.supplier-fulfilment-returns.warehouse-reports.list.
+  pagination: none
+  items_path: result.warehouseReports
+  keywords:
+  - supplier
+  - fulfilment
+  - returns
+  - warehouse
+  - reports
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplier-fulfilment-returns/warehouse-reports.list') отличается
+    от пути ('v1.supplier-fulfilment-returns.warehouse-reports.list'); взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    returnId:
+      type: string
+      required: true
+- operation_id: v1.supplier-return.get
+  rpc_method: v1.supplierReturn.get
+  path: /jsonrpc/v1/supplier-return.get
+  section: returns
+  safety: read
+  summary: Get supplier return detail info by code
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplierReturn.get') отличается от пути ('v1.supplier-return.get');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.list
+  rpc_method: v1.supplierReturn.list
+  path: /jsonrpc/v1/supplier-return.list
+  section: returns
+  safety: read
+  summary: List supplier returns
+  pagination: page
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplierReturn.list') отличается от пути ('v1.supplier-return.list');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    filter:
+      type: array
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.update-event
+  rpc_method: v1.supplierReturn.updateEvent
+  path: /jsonrpc/v1/supplier-return.update-event
+  section: returns
+  safety: write
+  summary: Обновить событие возврата поставщика.
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - update
+  - event
+  - возвраты
+  - возврат
+  - короба
+  - обновить
+  - событие
+  - возврата
+  - поставщика
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v1.supplierReturn.updateEvent') отличается от пути ('v1.supplier-return.update-event');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    type:
+      type: string
+      required: true
+      enum:
+      - confirm
+- operation_id: v1.supplier-return.file.create
+  rpc_method: v1.file.createFromFile
+  path: /jsonrpc/v1/supplier-return/file.create
+  section: returns
+  safety: write
+  summary: Create file
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - file
+  - create
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.file.createFromFile', а путь — 'v1.supplier-return.file.create'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    file:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.item.list
+  rpc_method: v1.supplierReturn.getItems
+  path: /jsonrpc/v1/supplier-return/item.list
+  section: returns
+  safety: read
+  summary: Получение информации по составу заказа
+  pagination: page
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - item
+  - list
+  - возвраты
+  - возврат
+  - короба
+  - получение
+  - информации
+  - составу
+  - заказа
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.supplierReturn.getItems', а путь — 'v1.supplier-return.item.list'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    filter:
+      type: array
+    limit:
+      type: integer
+      required: true
+    page:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.statistics.get
+  rpc_method: v1.supplierReturn.getStatistics
+  path: /jsonrpc/v1/supplier-return/statistics.get
+  section: returns
+  safety: read
+  summary: Get supplier return statistic info by code
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - statistics
+  - get
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.supplierReturn.getStatistics', а путь — 'v1.supplier-return.statistics.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.validation-error.list
+  rpc_method: v1.supplierReturn.listValidationError
+  path: /jsonrpc/v1/supplier-return/validation-error.list
+  section: returns
+  safety: read
+  summary: list validation errors
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - validation
+  - error
+  - list
+  - возвраты
+  - возврат
+  - короба
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.supplierReturn.listValidationError', а путь — 'v1.supplier-return.validation-error.list'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.warehouse-event.get
+  rpc_method: v1.supplierReturn.getWarehouseEvent
+  path: /jsonrpc/v1/supplier-return/warehouse-event.get
+  section: returns
+  safety: read
+  summary: Список событий по конкретному складу
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - warehouse
+  - event
+  - get
+  - возвраты
+  - возврат
+  - короба
+  - список
+  - событий
+  - конкретному
+  - складу
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.supplierReturn.getWarehouseEvent', а путь — 'v1.supplier-return.warehouse-event.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.warehouse-event.list
+  rpc_method: v1.supplierReturn.getWarehouseEvents
+  path: /jsonrpc/v1/supplier-return/warehouse-event.list
+  section: returns
+  safety: read
+  summary: Список событий по складам
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - warehouse
+  - event
+  - list
+  - возвраты
+  - возврат
+  - короба
+  - список
+  - событий
+  - складам
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.supplierReturn.getWarehouseEvents', а путь — 'v1.supplier-return.warehouse-event.list'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.supplier-return.warehouse-report.get
+  rpc_method: v1.supplierReturn.getWarehouseReports
+  path: /jsonrpc/v1/supplier-return/warehouse-report.get
+  section: returns
+  safety: read
+  summary: Список ошибок резервации по конкретному складу
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - warehouse
+  - report
+  - get
+  - возвраты
+  - возврат
+  - короба
+  - список
+  - ошибок
+  - резервации
+  - конкретному
+  - складу
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: enum
+  spec_conflict: enum спеки задаёт method 'v1.supplierReturn.getWarehouseReports', а путь — 'v1.supplier-return.warehouse-report.get'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    warehouse_code:
+      type: string
+      required: true
+- operation_id: v1.supplier-return.warehouse-report.list
+  rpc_method: v1.supplierReturn.WarehouseReportsList
+  path: /jsonrpc/v1/supplier-return/warehouse-report.list
+  section: returns
+  safety: read
+  summary: Получения данных по ошибкам сборки на складе ("Ошибка WMS")
+  pagination: none
+  items_path: ''
+  keywords:
+  - supplier
+  - return
+  - warehouse
+  - report
+  - list
+  - возвраты
+  - возврат
+  - короба
+  - получения
+  - данных
+  - ошибкам
+  - сборки
+  - складе
+  - ошибка
+  internal: false
+  api_version: v1
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v1.supplierReturn.WarehouseReportsList', а путь — 'v1.supplier-return.warehouse-report.list'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    code:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v1.tokens.create
+  rpc_method: v1.tokens.create
+  path: /jsonrpc/v1/tokens.create
+  section: account
+  safety: write
+  summary: Получить access-токен. Вызывается клиентом автоматически.
+  pagination: none
+  items_path: ''
+  keywords:
+  - tokens
+  - create
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  - получить
+  - вызывается
+  - клиентом
+  - автоматически
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    clientId:
+      type: string
+    clientSecret:
+      type: string
+    grantType:
+      type: string
+      enum:
+      - password
+      - user_session
+      - client_credentials
+    password:
+      type: string
+    username:
+      type: string
+- operation_id: v1.tokens.update
+  rpc_method: v1.tokens.update
+  path: /jsonrpc/v1/tokens.update
+  section: account
+  safety: write
+  summary: Обновить access-токен по refresh-токену. Вызывается клиентом автоматически.
+  pagination: none
+  items_path: ''
+  keywords:
+  - tokens
+  - update
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  - обновить
+  - токену
+  - вызывается
+  - клиентом
+  - автоматически
+  internal: true
+  api_version: v1
+  live_verified: false
+  method_source: example
+  params:
+    refreshToken:
+      type: string
+      required: true
+- operation_id: v1.user.first-login
+  rpc_method: v1.user.first-login
+  path: /jsonrpc/v1/user/first-login
+  section: account
+  safety: write
+  summary: Update first login attribute in keycloak
+  pagination: none
+  items_path: ''
+  keywords:
+  - user
+  - first
+  - login
+  - аккаунт
+  - доступ
+  - токен
+  - профиль
+  - партнёр
+  - настройки
+  internal: false
+  api_version: v1
+  live_verified: false
+- operation_id: v2.brands.list
+  rpc_method: v2.brands.list
+  path: /jsonrpc/v2/brands.list
+  section: catalog
+  safety: read
+  summary: Returns a list of brands
+  pagination: none
+  items_path: ''
+  keywords:
+  - brands
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    method:
+      type: string
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v2.categories.list
+  rpc_method: v2.categories.list
+  path: /jsonrpc/v2/categories.list
+  section: catalog
+  safety: read
+  summary: Returns a list of axapta categories
+  pagination: none
+  items_path: ''
+  keywords:
+  - categories
+  - list
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    method:
+      type: string
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v2.dictionaries.get
+  rpc_method: v2.dictionaries.get
+  path: /jsonrpc/v2/dictionaries.get
+  section: catalog
+  safety: read
+  summary: Метод Lamoda v2.dictionaries.get.
+  pagination: none
+  items_path: result.axapta_categories_1
+  keywords:
+  - dictionaries
+  - get
+  - номенклатура
+  - справочник
+  - атрибуты
+  - категории
+  - бренды
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: enum
+- operation_id: v2.products-added.total
+  rpc_method: v2.products-added.total
+  path: /jsonrpc/v2/products-added.total
+  section: products
+  safety: read
+  summary: Returns a total of products already added to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - added
+  - total
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v2.products.added
+  rpc_method: v2.products.added
+  path: /jsonrpc/v2/products.added
+  section: products
+  safety: read
+  summary: Returns a list of products added to promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - added
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    limit:
+      type: integer
+      required: true
+    offset:
+      type: integer
+      required: true
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    sort_by:
+      type: string
+      enum:
+      - lamoda_discount_percent
+    sort_order:
+      type: string
+      enum:
+      - ASC
+      - DESC
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v2.products.total
+  rpc_method: v2.products.total
+  path: /jsonrpc/v2/products.total
+  section: products
+  safety: read
+  summary: Returns a total of products in order to add to onsite_float promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - products
+  - total
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    show_only_recommended:
+      type: boolean
+      description: Показывать только рекомендуемые (для баннера на странице акции)
+- operation_id: v2.promotion.promotion-products.template
+  rpc_method: v2.promotion-products.template
+  path: /jsonrpc/v2/promotion/promotion-products.template
+  section: products
+  safety: read
+  summary: Initiates template file asynchronous generation. Result file will be stored with seller-file-manager
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotion
+  - products
+  - template
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  spec_conflict: example спеки задаёт method 'v2.promotion-products.template', а путь — 'v2.promotion.promotion-products.template'.
+    Это РАЗНЫЕ операции. Взято значение из спеки; перед реальным вызовом проверьте dry_run.
+  spec_conflict_severity: high
+  params:
+    promotion_id:
+      type: integer
+      required: true
+    promotion_type:
+      type: string
+      required: true
+      description: onsite означает что в promotion_id указан идентификатор промо-варианта onsite_float
+        означает что в promotion_id указан идентификатор всей промо (parent_promotion_id)
+      enum:
+      - onsite
+      - onsite_float
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v2.promotions.get
+  rpc_method: v2.promotions.get
+  path: /jsonrpc/v2/promotions.get
+  section: promotions
+  safety: read
+  summary: Returns the promotion
+  pagination: none
+  items_path: ''
+  keywords:
+  - promotions
+  - get
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    method:
+      type: string
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v2.promotions.list
+  rpc_method: v2.promotions.list
+  path: /jsonrpc/v2/promotions.list
+  section: promotions
+  safety: read
+  summary: Returns a list of grouped promotions
+  pagination: none
+  items_path: result.promotions
+  keywords:
+  - promotions
+  - list
+  - акции
+  - акция
+  - промо
+  - скидки
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: enum
+  params:
+    date_from:
+      type: string
+      required: true
+    date_to:
+      type: string
+      required: true
+    seller_id:
+      type: integer
+      required: true
+    show_only_available_for_partner:
+      type: boolean
+      description: Только те акции, в которых может участвовать хотя бы один товар селлера
+- operation_id: v2.recommended-products.add
+  rpc_method: v2.recommended-products.add
+  path: /jsonrpc/v2/recommended-products.add
+  section: products
+  safety: write
+  summary: Add recommended products to promotion. Returns count of success/failed added products and file
+    with added products for seller.
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - add
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    all_products:
+      type: boolean
+    brand_ids:
+      type: array
+    category_ids:
+      type: array
+    discount_percent:
+      type: integer
+      required: true
+    parent_promotion_id:
+      type: integer
+      required: true
+    product_ids:
+      type: array
+    recommended_metrics:
+      type: array
+    seller_id:
+      type: integer
+      required: true
+    value:
+      type: string
+      description: Поиск по полям sku_supplier || name
+- operation_id: v2.recommended-products.template
+  rpc_method: v2.recommended-products.template
+  path: /jsonrpc/v2/recommended-products.template
+  section: products
+  safety: read
+  summary: Initiates template file asynchronous generation. Result file will be stored with seller-file-manager
+  pagination: none
+  items_path: ''
+  keywords:
+  - recommended
+  - products
+  - template
+  - товары
+  - товар
+  - карточки
+  - ассортимент
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    parent_promotion_id:
+      type: integer
+      required: true
+    seller_id:
+      type: integer
+      required: true
+- operation_id: v2.stock-report.download
+  rpc_method: v2.stockReport.download
+  path: /jsonrpc/v2/stock-report.download
+  section: stocks
+  safety: read
+  summary: Get stock report uuid
+  pagination: none
+  items_path: ''
+  keywords:
+  - stock
+  - report
+  - download
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  spec_conflict: оформление имени в спеке ('v2.stockReport.download') отличается от пути ('v2.stock-report.download');
+    взято значение из спеки
+  spec_conflict_severity: low
+  params:
+    axapta_category_id:
+      type: array
+    brand_id:
+      type: integer
+    search:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+    sku_list:
+      type: array
+    with_zero_quantity:
+      type: boolean
+- operation_id: v2.stock.list
+  rpc_method: v2.stock.list
+  path: /jsonrpc/v2/stock.list
+  section: stocks
+  safety: read
+  summary: Get stock info
+  pagination: page
+  items_path: result.stocks
+  keywords:
+  - stock
+  - list
+  - остатки
+  - сток
+  - склад
+  - неликвид
+  internal: false
+  api_version: v2
+  live_verified: false
+  method_source: example
+  params:
+    axapta_category_id:
+      type: array
+    brand_id:
+      type: integer
+    limit:
+      type: integer
+    page:
+      type: integer
+    search:
+      type: string
+    seller_id:
+      type: integer
+      required: true
+    warehouse_code:
+      type: string
+    with_zero_quantity:
+      type: boolean
